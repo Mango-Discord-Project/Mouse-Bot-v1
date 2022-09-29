@@ -8,11 +8,5 @@
 		"cSpell.words": [
 			"__pypackages__"
 		]
-	},
-	"python.analysis.extraPaths": [
-		"${workspaceFolder}\\__pypackages__\\3.10\\lib"
-	],
-	"python.autoComplete.extraPaths": [
-		"${workspaceFolder}\\__pypackages__\\3.10\\lib"
-	]
+	}
 }
