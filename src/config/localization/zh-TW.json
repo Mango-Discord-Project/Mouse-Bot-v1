@@ -1,0 +1,4 @@
+{
+    "command.main.ping.name": "ping 延遲",
+    "command.main.ping.description": "回傳機器人的延遲"
+}
