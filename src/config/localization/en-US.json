@@ -1,5 +1,4 @@
 {
     "command.main.ping.name": "ping",
     "command.main.ping.description": "return bot's latency"
-    
 }

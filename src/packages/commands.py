@@ -1,13 +1,13 @@
 import os
 import json
 
-i18n_file, info_file = '../config/localization/', '../config/command_info.json'
+i18n_file_path, info_file_path = './config/localization/', './config/command_info.json'
 
-def i18n_mixin(self, command_id: str) -> dict:
+def i18n_mixin(command_id: str) -> dict:
     langs = {"name_localizations": {}, "description_localizations": {}}
 
-    for lang in os.listdir(i18n_file):
-        with open(i18n_file + lang, encoding='utf8') as file:
+    for lang in os.listdir(i18n_file_path):
+        with open(i18n_file_path + lang, encoding='utf8') as file:
             data = json.load(file)
 
         for langs_key, file_key in (('name_localizations', 'name'), ('description_localizations', 'description')):
@@ -16,10 +16,8 @@ def i18n_mixin(self, command_id: str) -> dict:
 
     return langs
 
-def command_argument_mixin(self, command_id: str) -> dict:
-    with open(info_file) as info_file:
+def command_argument_mixin(command_id: str) -> dict:
+    with open(info_file_path, encoding='utf8') as info_file:
         info = json.load(info_file).get(command_id, {})
 
-    return info | self.i18n_mixin(command_id)
-
-__all__ = ['i18n_mixin', 'command_argument_mixin']
+    return info | i18n_mixin(command_id)

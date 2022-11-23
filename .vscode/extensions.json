@@ -1,0 +1,34 @@
+{
+  "recommendations": [
+    // Theme
+    "akamud.vscode-theme-onedark",
+    "PKief.material-icon-theme",
+
+    // Language Base
+    "bungcip.better-toml",
+    "yzhang.markdown-all-in-one",
+    "donjayamanne.python-extension-pack",
+    "mikestead.dotenv",
+
+    // Language extension
+    "mgesbert.python-path",
+    // Markdown
+    "DavidAnson.vscode-markdownlint",
+    "bierner.markdown-emoji",
+
+    // QoL
+    "streetsidesoftware.code-spell-checker",
+    "mkxml.vscode-filesize",
+    // todo
+    "Gruntfuggly.todo-tree",
+    "wayou.vscode-todo-highlight",
+
+    // Test
+    "rangav.vscode-thunder-client",
+    "almenon.arepl",
+
+    // Pretty Code
+    "esbenp.prettier-vscode",
+    "bodil.prettier-toml"
+  ]
+}
