@@ -1,6 +1,25 @@
 {
     "cSpell.words": [
         "dotenv",
-        "nhentai"
+        "doujinshi",
+        "nhentai",
+        "pixiv",
+        "Textless"
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[toml]": {
+        "editor.defaultFormatter": "bodil.prettier-toml"
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "editor.tabSize": 4,
+    "python.analysis.typeCheckingMode": "off",
+    "indentRainbow.ignoreErrorLanguages": [
+        "markdown",
+        "json"
     ]
 }

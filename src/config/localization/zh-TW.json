@@ -1,4 +1,6 @@
 {
     "command.main.ping.name": "ping-延遲",
-    "command.main.ping.description": "回傳機器人的延遲"
+    "command.main.ping.description": "回傳機器人的延遲",
+    "command.main.cog.name": "cog",
+    "command.main.cog.description": "給開發者的Cog操作"
 }

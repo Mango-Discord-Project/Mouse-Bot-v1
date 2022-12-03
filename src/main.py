@@ -1,37 +1,42 @@
 import os
-import json
-# import tomllib
+from typing import Self
 
-import discord
-from discord import ApplicationContext
+from discord import Bot as discord_bot
+from discord import ApplicationContext, Option, Intents
 import dotenv
-from rich.console import Console
 
 from packages import *
 
 global_console = Logger(prefix='GLOBAL > ')
 global_console.log('Start')
 
-class Bot(discord.Bot):
-    def __init__(self):
-        super().__init__()
+class Bot(discord_bot):
+    def __init__(self: Self):
+        super().__init__(intents=Intents.all())
         self.console = Logger(prefix='.MAIN > ')
         self._add_command()
+        self.__dict__ |= get_bot_config()
+        
+        # load cogs
+        self.load_extensions(*(f'cogs.{i.removesuffix(".py")}' for i in os.listdir('./cogs') if i.endswith('.py')))
 
-    def _add_command(self):
+    def _add_command(self: Self):
         @self.slash_command(**command_argument_mixin('main.ping'))
         async def ping(ctx: ApplicationContext):
             self.console.log(f'{ctx.author} use {ctx.command.qualified_name}')
-            await ctx.respond(f'{self.latency*1000:.4f}')
+            await ctx.respond(f'ping: `{self.latency*1000:.4f}`')
+        
+        @self.slash_command(**command_argument_mixin('main.cog'))
+        async def cog(ctx: ApplicationContext, 
+                      cog_name: Option(str, 'the name of the cog', required=True),
+                      action: Option(str, choices=['load', 'reload', 'unload'], required=False, default='reload')):
+            if ctx.author.id not in self.author_ids:
+                return ctx.respond(f'You are not Mouse Bot\' developer')
+            getattr(self, f'{action}_extension')(f'cogs.{cog_name}')
+            await ctx.respond(f'Success {action} {cog_name}', ephemeral=True)
 
     async def on_ready(self):
         self.console.log('Bot is on Ready')
-
-        self.load_extension('cogs.url_utils')
-        # extensions = [f'cogs.{file[:-3]}' for file in os.listdir('./cogs') if file.endswith('.py')]
-        # error = self.load_extensions(*extensions,)
-        # if error:
-        #     self.console.log(error)
 
 
 if __name__ == '__main__':

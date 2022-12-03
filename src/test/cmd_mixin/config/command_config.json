@@ -1,0 +1,8 @@
+{
+    "default": {
+        "default": 1
+    },
+    "a": {
+        "argument": 2
+    }
+}
