@@ -1,25 +1,29 @@
 {
-    "cSpell.words": [
-        "dotenv",
-        "doujinshi",
-        "nhentai",
-        "pixiv",
-        "Textless"
-    ],
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "[toml]": {
-        "editor.defaultFormatter": "bodil.prettier-toml"
+    "[python]": {
+        "editor.tabSize": 4
     },
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.python"
-    },
-    "editor.tabSize": 4,
-    "python.analysis.typeCheckingMode": "off",
+    "editor.tabSize": 2,
     "indentRainbow.ignoreErrorLanguages": [
-        "markdown",
-        "json"
+        "markdown"
+    ],
+    "cSpell.words": [
+        "dotenv",
+        "doujinshi",
+        "hentai",
+        "hentaibus",
+        "nhentai",
+        "pixiv",
+        "pycord",
+        "Textless",
+        "whzbot"
+    ],
+    "python.autoComplete.extraPaths": [
+        "__pypackages__/3.11/lib/"
+    ],
+    "python.analysis.extraPaths": [
+        "__pypackages__/3.11/lib/"
     ]
 }

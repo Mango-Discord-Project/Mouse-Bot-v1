@@ -1,0 +1,15 @@
+from typing import Self
+
+from discord import Bot
+from discord.ext.commands import Cog
+from packages import *
+
+class Foo(Cog, LoggerCog):
+    def __init__(self: Self, bot: Bot) -> None:
+        super().__init__()
+        self.bot: Bot = bot
+        self.console = Logger(prefix=' > ')
+        self.log('Load Cog Success')
+
+def setup(bot: Bot) -> None:
+    bot.add_cog(Foo(bot))

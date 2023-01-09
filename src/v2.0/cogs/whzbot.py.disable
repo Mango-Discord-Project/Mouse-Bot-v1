@@ -1,0 +1,66 @@
+from typing import Self
+from os import listdir, path
+
+from discord import Bot, SlashCommandGroup, ApplicationContext, Option
+from discord.ext.commands import Cog
+from packages import *
+
+class TODO:
+    """
+    at骰娘后接指令可以指定骰娘单独响应，如at骰娘.bot off
+    多数指令需要后接参数，请.help对应指令 获取详细信息
+    掷骰指令包括:
+    .dismiss 退群 *没写
+    .bot 开关 *use .set bot on/off
+    .rules 规则速查
+    .r 掷骰
+    .ob 旁观模式
+    .set 设置
+    .nn 随机姓名
+    .name 设置昵称 *没写
+    .coc COC人物作成 *没写
+    .dnd DND人物作成 *没写
+    .st 角色卡设置
+    .rc/ra 检定
+    设置检定房规 *看 .set
+    .sc 理智检定
+    .en 成长检定
+    .ri 先攻 *没写
+    .init 先攻列表 *没写
+    .ww 骰池 *没写
+    .me 第三人称动作 *没写
+    .jrrp 今日人品
+    .send 向Master发送消息 *没写
+    .draw 抽牌
+    .deck 牌堆
+    .gacha 模拟抽卡
+    .game 小游戏
+    为了避免未预料到的指令误判，请尽可能在参数之间使用空格
+    """
+
+def generate_path(pathlike: list[str]) -> str:
+    return path.join(pathlike)
+
+def file_filter(filenames: list[str], 
+                whitelist_suffix: list[str], 
+                blacklist_suffix: list[str] = []):
+    suffix = lambda string: string.split('.')[-1]
+    return [i for i in filenames if suffix(i) in whitelist_suffix and suffix(i) not in blacklist_suffix]
+
+class WhzBot(Cog, LoggerCog):
+    def __init__(self: Self, bot: Bot) -> None:
+        super().__init__()
+        self.bot: Bot = bot
+        self.logger_prefix = 'WhzBot'
+        self.log('Load Cog Success')
+    
+    whzbot = SlashCommandGroup('whzbot', **mixin())
+    
+    @whzbot.command()
+    async def deck(self: Self, 
+                   ctx: ApplicationContext, 
+                   name: Option(str, required=False, choices=[i for i in generate_path(['.', 'config', 'deck'])])):
+        ...
+
+def setup(bot: Bot) -> None:
+    bot.add_cog(WhzBot(bot))

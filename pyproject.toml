@@ -1,0 +1,17 @@
+[tool.pdm]
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Mango", email = "***@gmail.com"},
+]
+dependencies = [
+    "py-cord>=2.3.2",
+    "python-dotenv>=0.21.0",
+    "pretty-errors>=1.2.25",
+    "rich>=12.6.0",
+]
+requires-python = ">=3.11"
+license = {text = "AGPL-3.0"}

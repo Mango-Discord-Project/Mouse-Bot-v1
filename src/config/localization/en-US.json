@@ -1,6 +1,0 @@
-{
-    "command.main.ping.name": "ping",
-    "command.main.ping.description": "return bot's latency",
-    "command.main.cog.name": "cog",
-    "command.main.cog.description": "Cog Action For Bot Developer"
-}
